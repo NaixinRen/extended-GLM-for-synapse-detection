@@ -31,3 +31,14 @@ pre = 50;post = 11;
 figure,
 plotCCG(pre,post,CCG,model_fits,results)
 
+%% Compare overall connectivity matrices
+
+figure,
+subplot(1,2,1)
+imagesc(data.syn.w_syn)
+ylabel('Presynaptic Neuron')
+xlabel('Postsynaptic Neuron')
+subplot(1,2,2)
+imagesc(results.cnx_label)
+xlabel('Postsynaptic Neuron')
+
