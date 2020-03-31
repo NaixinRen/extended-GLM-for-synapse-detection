@@ -1,4 +1,4 @@
-function [f,df,lam] = loss_inhalpha(b,X,y,t,v,dis,eta)
+function [f,df,lam] = loss_inhalpha(b,X,y,t,v,dis,eta,tau0)
 
 p = b((size(X,2)+1):end);
 p = exp(p);
@@ -28,5 +28,5 @@ dl(~isfinite(dl)) = 0;
 db = X'*dl;
 dw = syn'*dl/w+eta_w*2*(abs(w)-0);
 ddeltat = nansum((syn/tau-syn./(t-deltat)).*dl)+eta_dt*2*((deltat)-dis*v(1)-v(2));
-dtau = ((-syn/tau+syn.*(t-deltat)/tau.^2))'*dl+eta_tau*2*(tau-.8);
+dtau = ((-syn/tau+syn.*(t-deltat)/tau.^2))'*dl+eta_tau*2*(tau-tau0);
 df = [db;dw*w;ddeltat*deltat;dtau*tau];

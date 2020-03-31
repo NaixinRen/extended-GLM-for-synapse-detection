@@ -1,10 +1,10 @@
-function b1 = random_parameter_s1(y,XX,b_glm,distance,eta,stage)
+function b1 = random_parameter_s1(y,XX,t,b_glm,distance,eta,tau0,stage)
 
-t = linspace(-25,25,102);
-t = t+mean(diff(t))/2;
-t = t(1:101);
+% t = linspace(-25,25,102);
+% t = t+mean(diff(t))/2;
+% t = t(1:101);
 v0 = [0;0];
-tau0 = 0.8;
+
 
 options=[];
 options.method = 'cg';
@@ -23,7 +23,7 @@ switch stage
             else
                 b0 = [b_glm(1), b_glm(2:end)+randn(1,size(XX,1)-1)/5, log(abs(randn(1))), rlat, log(tau0)];
             end
-            [brr,frr] = minFunc(@loss_excalpha,b0',options,XX',y',t',v0,distance,eta);
+            [brr,frr] = minFunc(@loss_excalpha,b0',options,XX',y',t',v0,distance,eta,tau0);
             if frr<f
                 b1=brr;
                 f=frr;
@@ -39,7 +39,7 @@ switch stage
             else
                 b0 = [b_glm(1), b_glm(2:end)+randn(1,size(XX,1)-1)/5, log(abs(randn(1))), rlat, log(tau0)];
             end
-            [brr,frr] = minFunc(@loss_inhalpha,b0',options,XX',y',t',v0,distance,eta);
+            [brr,frr] = minFunc(@loss_inhalpha,b0',options,XX',y',t',v0,distance,eta,tau0);
             if frr<f
                 b1=brr;
                 f=frr;

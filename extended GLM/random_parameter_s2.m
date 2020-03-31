@@ -1,9 +1,9 @@
-function b1 = random_parameter_s2(y,XX,b_s1,distance,v,eta,stage)
+function b1 = random_parameter_s2(y,XX,t,b_s1,distance,v,eta,tau0,stage)
 
-t = linspace(-25,25,102);
-t = t+mean(diff(t))/2;
-t = t(1:101);
-tau0 = 0.8;
+% t = linspace(-25,25,102);
+% t = t+mean(diff(t))/2;
+% t = t(1:101);
+
 
 options=[];
 options.method = 'cg';
@@ -17,7 +17,7 @@ synt = t;
 synt(t<dt_st)=dt_st;
 syn = stage*(synt-dt_st)/tau0.*exp(1-(synt-dt_st)/tau0);
 
-b_est= glmfit([XX',syn(1:101)'],y','poisson','constant','off');
+b_est= glmfit([XX',syn(1:length(y))'],y','poisson','constant','off');
 w_st = abs(b_est(end))+(b_est(end)==0)*.001;
 
 switch stage
@@ -31,7 +31,7 @@ switch stage
                 b0 = b_s1';
             end
             
-            [brr,frr] = minFunc(@loss_excalpha,b0,options,XX',y',t',v,distance,eta);
+            [brr,frr] = minFunc(@loss_excalpha,b0,options,XX',y',t',v,distance,eta,tau0);
             if frr<f
                 b1=brr;
                 f=frr;
@@ -47,7 +47,7 @@ switch stage
                 b0 = b_s1';
             end
             
-            [brr,frr] = minFunc(@loss_inhalpha,b0,options,XX',y',t',v,distance,eta);
+            [brr,frr] = minFunc(@loss_inhalpha,b0,options,XX',y',t',v,distance,eta,tau0);
             if frr<f
                 b1=brr;
                 f=frr;

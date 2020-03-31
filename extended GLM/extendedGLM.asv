@@ -1,25 +1,22 @@
 function model_fits = extendedGLM(CCG, X, distance,hyperparameter,ignore)
 
 % This function fits all the cross-correlogrms from one presynaptic neuron.
-%
+
 % model_fits is a structure with 4 fields:
-%
+
 % -glm: the model fitting results of the slow model
-% ---yhat: fitted CCG
+% ---yhat: fitted results
 % ---llh: log likelihood 
 % ---b: parameter
-%
+
 % -exc: the model fitting results of the excitatory full model (stage 2,
 % with latency constraints)
 % ---eta: [eta_w eta_dt eta_tau], eta_dt is calculated based on the
 % estimation 
-% ---v: estimated "conduction velocity", dt = distance/v(1)+v(2)
-%
+% ---v: estimated "conduction velocity"
 % -inh: the model fitting results of the inhibitory full model (stage 2,
-% with latency constraints). The fields have the same meaning with field exc.
-%
-% -stage1: the model fitting results of the full model (stage 1), with a
-% field for exc and inh stage 1 respectively.
+% with latency constraints)
+% -stage1: the model fitting results of the full model (stage 1)
 
 
 

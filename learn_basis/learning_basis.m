@@ -38,12 +38,12 @@ B = randn(k,pb);
 
 X = B*bbas';
 A = zeros(n,k+1);
-w_center = ones(101,1);
-w_center(49:52,1) = [0;0;0;0];
-w_center = w_center';
+% w_center = ones(101,1);
+% w_center(49:52,1) = [0;0;0;0];
+% w_center = w_center';
 for i=1:n
     idx = isfinite(y(i,:));
-    [A(i,:)] = glmfit(X(:,idx)',y(i,idx)','poisson','weights',w_center);
+    [A(i,:)] = glmfit(X(:,idx)',y(i,idx)','poisson'); % ,'weights',w_center);
 end
 mu=A(:,1); A=A(:,2:end);
 %%

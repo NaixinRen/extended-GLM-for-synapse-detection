@@ -7,7 +7,7 @@ spikes = data.spk;
 sr = 10; % sampling rate per ms (kHz)
 location.x = data.xx;
 location.y = data.yy;
-hyperparameter.binsize = .5; % binsize of the CCG (ms)
+hyperparameter.binsize = 0.5; % binsize of the CCG (ms)
 hyperparameter.interval = 50; % interval of the CCG (ms, interval=50 means the interval is [-25,25] ms) 
 ignore_index = 1; % ignore low firing neurons and neuron pairs with potential spike sorting problem
 
@@ -38,7 +38,7 @@ results = detect_cnx(model_fits,ignore,threshold);
 
 pre = 1;post = 14;
 figure(1),
-plotCCG(pre,post,CCG,t,model_fits,results)
+plotCCG(pre,post,CCG,model_fits,results)
 %% ROC curve for synapse detection(regardless of the sign of connections)
 
 true_label = data.syn.w_syn~=0;

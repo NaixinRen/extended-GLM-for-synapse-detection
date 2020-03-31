@@ -12,11 +12,11 @@ B = reshape(b((n*k+n+1):end),k,pb);
 
 xb = mu + A*B*bas + offset;
 lam = exp(xb);
-w_center = ones(101,1);
-w_center(49:52,1) = [0;0;0;0];
-w_center = w_center';
-f = -nansum(nansum((y.*xb - lam).*w_center));
-lam_err = (lam-y).*w_center;
+% w_center = ones(101,1);
+% w_center(49:52,1) = [0;0;0;0];
+% w_center = w_center';
+f = -nansum(nansum((y.*xb - lam))); %.*w_center));
+lam_err = (lam-y); %.*w_center;
 lam_err(~isfinite(lam_err))=0;
 dmu = sum(lam_err,2);
 dA = (lam_err)*(B*bas)';
