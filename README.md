@@ -31,5 +31,5 @@ where `threshold` is optional.
 
 Compare overall connectivity matrices
 
-![no pics](/pics/connectivity matrices_50 neurons.png "connectivity matrices")
+![no pics](/pics/Connectivity matrices_50 neurons.png "connectivity matrices")
 
