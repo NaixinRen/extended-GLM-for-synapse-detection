@@ -30,6 +30,5 @@ where `threshold` is optional.
 ### Results visualization
 
 Compare overall connectivity matrices
-
-![no pics](/pics/Connectivity matrices_50 neurons.png "connectivity matrices")
+![connectivity matrices](http://github.com/NaixinRen/extended-GLM-for-synapse-detection/raw/master/pics/Connectivity_matrices.png)
 
