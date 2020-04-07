@@ -1,4 +1,4 @@
-# Extended GLM for Synapse Detection from Large-scale Spike Recording
+# Synapse Detection from Large-scale Spike Recording
  
 Detecting synaptic connections using large-scale extracellular spike recordings presents a statistical challenge. Here we develop an extension of a Generalized Linear Model that describes the cross-correlograms between pairs of neurons to detect synaptic connections from large-scale spike recording. The extended GLM explicitly separates the cross-correlograms into fast synaptic effects and slow background fluctuations, and also incorporates two structural constraints learned from the whole network: presynaptic neuron type and the relationship between the synaptic latency and distance between pre- and postsynaptic neurons. 
 
@@ -30,6 +30,5 @@ where `threshold` is optional.
 ### Results visualization
 
 Compare overall connectivity matrices
-
-![no pics](URL "connectivity matrices")
+![connectivity matrices](http://github.com/NaixinRen/extended-GLM-for-synapse-detection/raw/master/pics/Connectivity-matrices_50-neurons.png)
 
