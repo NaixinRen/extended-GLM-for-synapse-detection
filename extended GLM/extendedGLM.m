@@ -29,7 +29,7 @@ binsize = hyperparameter.binsize;
 tau0 = hyperparameter.tau0;
 eta_w = hyperparameter.eta_w;
 eta_tau = hyperparameter.eta_tau;
-eta_dt = hyperparameter.eta_dt;
+eta_dt_coeff = hyperparameter.eta_dt_coeff;
 
 
 NN = length(CCG);
@@ -103,7 +103,7 @@ llr(llr==-Inf)=nan;
 [ww,ii]=sort(weight,'descend');
 se_velocity = sqrt(nansum(err(ii(1:5)).^2)/5);
 v = exp(v1)';
-eta_dt = 2/se_velocity;
+eta_dt = eta_dt_coeff/se_velocity;
 eta = [eta_w eta_dt eta_tau];
 
 
@@ -199,7 +199,7 @@ llr(llr==-Inf)=nan;
 [ww,ii]=sort(weight,'descend');
 se_velocity = sqrt(nansum(err(ii(1:5)).^2)/5);
 v = exp(v1)';
-eta_dt = 2/se_velocity;
+eta_dt = eta_dt_coeff/se_velocity;
 eta = [eta_w eta_dt eta_tau];
 
 

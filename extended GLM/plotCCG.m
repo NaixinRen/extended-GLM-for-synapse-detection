@@ -17,7 +17,7 @@ elseif NeuronType(pre) < 0
 end
 
 if numel(fieldnames(results)) ==3
-    title([num2str(pre) ' --> ' num2str(post) ', Connection label: ' num2str(CnxLabel(pre,post))])
+    title([num2str(pre) ' --> ' num2str(post) ', Putaitve Connection: ' num2str(CnxLabel(pre,post))])
 else
     title([num2str(pre) ' --> ' num2str(post)])
 end

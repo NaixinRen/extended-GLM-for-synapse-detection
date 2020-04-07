@@ -1,6 +1,6 @@
 function results = detect_cnx(model_results,ignore,threshold)
 
-% This function returns the final results (results) based on the model fits. 
+% This function returns the final results ("results") based on the model fits. 
 %
 % results is a structure with 3 fields:
 %

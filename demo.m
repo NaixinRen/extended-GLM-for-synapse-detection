@@ -1,27 +1,27 @@
 clear; clc;
 addpath(genpath('extended GLM\'));
 addpath(genpath('learn_basis\'));
-load('simulated data_20 neurons.mat') % load simulated data
+load('simulated data_50 neurons.mat') % load simulated data
 %% parameter setting
-spikes = data.spk;
+
+spikes = data.spk; %spike train
 sr = 10; % sampling rate per ms (kHz)
-location.x = data.xx;
-location.y = data.yy;
-hyperparameter.binsize = .5; % binsize of the CCG (ms)
-hyperparameter.interval = 50; % interval of the CCG (ms, interval=50 means the interval is [-25,25] ms) 
+location.x = data.xx; % neuron location (x coordinate)
+location.y = data.yy; % neuron location (y coordinate)
 ignore_index = 1; % ignore low firing neurons and neuron pairs with potential spike sorting problem
-
-[CCG, t, distance, ignore] = generate_correlogram(spikes,sr,location,hyperparameter,ignore_index); % convert spike data into cross-correlograms
-
-X = learning_basis(CCG,ignore); % learn basis function
-
+hyperparameter.binsize = .5; % binsize of the CCG (ms)
+hyperparameter.interval = 50; % interval of the CCG (ms)
 hyperparameter.tau0 = 0.8; %ms
 hyperparameter.eta_w = 5;
 hyperparameter.eta_tau = 20;
-hyperparameter.eta_dt = 2;
+hyperparameter.eta_dt_coeff = 2;
 
+[CCG, t, distance, ignore] = generate_correlogram(spikes,sr,location,hyperparameter,ignore_index); 
+X = learning_basis(CCG,ignore); 
 %% model fitting and results
+
 NN = size(CCG,1);
+
 % for parallel computing
 % poolobj = gcp('nocreate');
 % delete(poolobj);
@@ -31,7 +31,7 @@ for pre = 1:NN % use parfor for parallel computing
     fprintf('neuron %i ',pre)
     model_fits(pre) = extendedGLM(CCG(pre,:), X, distance(pre,:),hyperparameter,ignore(pre,:));  
 end
-%%
+
 threshold = 5.09;
 results = detect_cnx(model_fits,ignore,threshold);
 %% plot CCG and fitting results
@@ -58,7 +58,10 @@ subplot(1,2,1)
 imagesc(data.syn.w_syn)
 ylabel('Presynaptic Neuron')
 xlabel('Postsynaptic Neuron')
+title ('ture connection')
+axis square
 subplot(1,2,2)
 imagesc(results.cnx_label)
 xlabel('Postsynaptic Neuron')
-
+title ('putative connection')
+axis square
