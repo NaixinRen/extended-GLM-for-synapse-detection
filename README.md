@@ -4,6 +4,10 @@ Detecting synaptic connections using large-scale extracellular spike recordings 
 
 [Ren N, Ito S, Hafizi H, Beggs JM, Stevenson IH (2020) Model-based detection of putative synaptic connections from spike recordings with latency and type constraints. *bioRxiv*](https://www.biorxiv.org/content/10.1101/2020.02.12.944496v1)
 
+<p align="center">
+<img src="https://github.com/NaixinRen/extended-GLM-for-synapse-detection/raw/master/pics/F1.png" width="600">
+</p>
+
 ## Running the demo
 
 demo.m shows an example of running the model on a simulated dataset.
@@ -29,6 +33,6 @@ where `threshold` is optional.
 
 ### Results visualization
 
-Compare overall connectivity matrices
+Compare overall connectivity matrices (on a simulation with 50 Leaky integrate-and-fire neurons)
 ![connectivity matrices](https://github.com/NaixinRen/extended-GLM-for-synapse-detection/raw/master/pics/ConnectivityMatrices_50neurons.png)
 
