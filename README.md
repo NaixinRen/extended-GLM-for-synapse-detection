@@ -33,6 +33,6 @@ where `threshold` is optional.
 
 ### Results visualization
 
-Compare overall connectivity matrices
+Compare overall connectivity matrices (on a simulation with 50 Leaky integrate-and-fire neurons)
 ![connectivity matrices](https://github.com/NaixinRen/extended-GLM-for-synapse-detection/raw/master/pics/ConnectivityMatrices_50neurons.png)
 
