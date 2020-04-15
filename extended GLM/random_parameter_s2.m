@@ -12,7 +12,7 @@ options.Display = 'off';
 f=Inf;
 
 
-dt_st = min(distance*v(1)+v(2),20);
+dt_st = min(distance*v(1)+v(2),max(t)-1);
 synt = t;
 synt(t<dt_st)=dt_st;
 syn = stage*(synt-dt_st)/tau0.*exp(1-(synt-dt_st)/tau0);
