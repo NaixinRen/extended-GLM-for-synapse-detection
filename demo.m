@@ -58,10 +58,10 @@ subplot(1,2,1)
 imagesc(data.syn.w_syn)
 ylabel('Presynaptic Neuron')
 xlabel('Postsynaptic Neuron')
-title ('ture connection')
+title ('true connections')
 axis square
 subplot(1,2,2)
 imagesc(results.cnx_label)
 xlabel('Postsynaptic Neuron')
-title ('putative connection')
+title ('estimated connections')
 axis square
