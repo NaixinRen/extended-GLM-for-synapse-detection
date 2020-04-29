@@ -46,21 +46,24 @@ true_label = true_label(eye(NN)~=1);
 scores = results.llr_matrix(eye(NN)~=1);
 scores(isnan(scores)) = -Inf;
 [X,Y,T,AUC] = perfcurve(true_label,scores,1);
+
+%% Compare overall connectivity matrices
+
 figure,
+subplot(1,3,1)
 plot(X,Y,'LineWidth',2)
 ylabel('True positive rate')
 xlabel('False positive rate')
 title('ROC for synapse detection')
-%% Compare overall connectivity matrices
+axis square
 
-figure,
-subplot(1,2,1)
-imagesc(data.syn.w_syn)
+subplot(1,3,2)
+imagesc(sign(data.syn.w_syn))
 ylabel('Presynaptic Neuron')
 xlabel('Postsynaptic Neuron')
 title ('true connections')
 axis square
-subplot(1,2,2)
+subplot(1,3,3)
 imagesc(results.cnx_label)
 xlabel('Postsynaptic Neuron')
 title ('estimated connections')
