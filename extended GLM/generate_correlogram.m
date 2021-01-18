@@ -4,7 +4,7 @@ function [CCG, t, distance, ignore] = generate_correlogram(spikes,sr,location,hy
 % This function generates cross-correlograms from spike trains
 
 % input arguments:
-% -spikes: spike times
+% -spikes: spike times, in MILLISECONDS
 % -sr: sampling rate of the spike data (per ms) 
 % -location: 2D location of the neurons(soma)
 % -interval: interval of the correlogram. eg. interval = 50 means the interval of the correlogram is [-25,25] ms

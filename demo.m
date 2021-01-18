@@ -4,7 +4,7 @@ addpath(genpath('learn_basis\'));
 load('simulated data_50 neurons.mat') % load simulated data
 %% parameter setting
 
-spikes = data.spk; %spike train
+spikes = data.spk; %spike trains, in MILLISECONDS
 sr = 10; % sampling rate per ms (kHz)
 location.x = data.xx; % neuron location (x coordinate)
 location.y = data.yy; % neuron location (y coordinate)
