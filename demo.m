@@ -16,7 +16,7 @@ hyperparameter.eta_w = 5;
 hyperparameter.eta_tau = 20;
 hyperparameter.eta_dt_coeff = 2;
 
-[CCG, t, distance, ignore] = generate_correlogram(spikes,sr,location,hyperparameter,ignore_index); 
+[CCG, ACG, t, distance, ignore] = generate_correlogram(spikes,sr,location,hyperparameter,ignore_index); 
 X = learning_basis(CCG,ignore); 
 %% model fitting and results
 
