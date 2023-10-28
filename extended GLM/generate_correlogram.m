@@ -1,4 +1,4 @@
-function [CCG, t, distance, ignore] = generate_correlogram(spikes,sr,location,hyperparameter,ignore_index)
+function [CCG, ACG, t, distance, ignore] = generate_correlogram(spikes,sr,location,hyperparameter,ignore_index)
 
 
 % This function generates cross-correlograms from spike trains
@@ -46,6 +46,8 @@ for i=1:NN
     if length(Tlist{i}) <= 1000 && ignore_index ==1
         continue
     end
+    [tmp,~] = corr_fast_v3(Tlist{i},Tlist{i},-interval,interval,2*(interval/binsize)+2);
+    ACG{i} = tmp(1:end-1)'; % last bin of histc contains data == the last bin
     for j=(i+1):NN
         if length(Tlist{j}) <= 1000 && ignore_index ==1
             continue
